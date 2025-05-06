@@ -33,4 +33,34 @@ return {
       },
     },
   },
+  {
+    "nvim-neotest/neotest",
+    lazy = false,
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      {
+        "fredrikaverpil/neotest-golang",
+        version = "*",
+        dependencies = {
+          "andythigpen/nvim-coverage", -- Added dependency
+        },
+      }, -- Installation
+    },
+    config = function()
+      require "configs.neotest"
+    end,
+  },
+  {
+    "andythigpen/nvim-coverage",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("coverage").setup {
+        auto_reload = true,
+      }
+    end,
+  },
 }
